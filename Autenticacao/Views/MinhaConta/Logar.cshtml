@@ -1,0 +1,53 @@
+﻿@model Autenticacao.ViewModel.LogarViewModel
+@{
+    ViewBag.Title = "Logar";
+}
+
+<div class="row">
+    <div class="col-sm-11 col-sm-offset-1">
+        <h2>Logar</h2>
+    </div>
+</div>
+
+@using (Html.BeginForm("Logar", "MinhaConta"))
+{
+    <div class="row">
+        <div class="col-sm-3 col-sm-offset-1">
+            @Html.ValidationSummary(true, "Por favor corrija os erros")
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3 col-sm-offset-1">
+            <div class="form-group">
+                @Html.LabelFor(l => l.Login)
+                @Html.TextBoxFor(l => l.Login, new { @class = "form-control" })
+                @Html.ValidationMessageFor(l => l.Login)
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3 col-sm-offset-1">
+            <div class="form-group">
+                @Html.LabelFor(l => l.Senha)
+                @Html.TextBoxFor(l => l.Senha, new { @class = "form-control" })
+                @Html.ValidationMessageFor(l => l.Senha)
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3 col-sm-offset-1">
+            <div class="checkbox">
+                <label>
+                    @Html.CheckBoxFor(l => l.Lembrar) Lembrar?
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3 col-sm-offset-1">
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn btn-primary">Logar</button>
+        </div>
+    </div>
+}
+
