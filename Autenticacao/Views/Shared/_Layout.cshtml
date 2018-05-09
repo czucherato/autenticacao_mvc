@@ -25,7 +25,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-right" id="navbar">
                 @{
-                    if (User.Identity.IsAuthenticated)
+                    if (!object.Equals(User, null) && User.Identity.IsAuthenticated)
                     {
                         @Html.Partial("Partial/_Usuario")
                     }
